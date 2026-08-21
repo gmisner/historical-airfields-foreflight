@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <path fill="#20282b" d="M128 5a14 14 0 0 1 10 4l109 109a14 14 0 0 1 0 20L138 247a14 14 0 0 1-20 0L9 138a14 14 0 0 1 0-20L118 9a14 14 0 0 1 10-4Z"/>
+  <path fill="none" stroke="#f4f1e8" stroke-width="8" d="M128 18a9 9 0 0 1 6 3l101 101a9 9 0 0 1 0 12L134 235a9 9 0 0 1-12 0L21 134a9 9 0 0 1 0-12L122 21a9 9 0 0 1 6-3Z"/>
+  <!-- Northwest-to-southeast runway, underneath at the intersection. -->
+  <path fill="#f5a000"
+        d="m71 78 7-7q4-4 8 0l99 99q4 4 0 8l-7 7q-4 4-8 0L71 86q-4-4 0-8Z"/>
+  <g fill="none" stroke="#20282b" stroke-width="5" stroke-linecap="butt">
+    <path d="m89 89 22 22"/>
+    <path d="m145 145 22 22"/>
+  </g>
+
+  <!-- Northeast-to-southwest runway, visibly crossing on top. -->
+  <path fill="#f5a000"
+        d="m170 71q4-4 8 0l7 7q4 4 0 8l-99 99q-4 4-8 0l-7-7q-4-4 0-8Z"/>
+  <g fill="none" stroke="#20282b" stroke-width="5" stroke-linecap="butt">
+    <path d="m167 89-20 20"/>
+    <path d="m142 114-12 12"/>
+    <path d="m117 139-28 28"/>
+  </g>
+</svg>

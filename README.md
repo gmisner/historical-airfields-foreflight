@@ -3,6 +3,8 @@
 # Historical Airports — ForeFlight Content Packs
 
 Builds one ForeFlight Content Pack per U.S. state from a reviewed airport CSV.
+The version 2.1 collection contains 2,803 historical airfields across all 50
+states, with an airport-named illustrated PDF attached to every waypoint.
 
 The primary source is Paul Freeman's *Abandoned & Little-Known Airfields* site,
 used with the site owner's permission. Packs are informational historical
@@ -32,6 +34,17 @@ Abandoned_Airports_AZ/
 AirDrop a state ZIP to an iPhone or iPad and choose ForeFlight, or import it
 through Files, email, Finder, or a supported cloud document provider.
 
+## Download and install
+
+Finished state ZIPs are distributed as assets on a single versioned GitHub
+Release rather than committed to Git. See [PACKS.md](PACKS.md) for the
+state-by-state download table and ForeFlight installation links.
+
+On an iPhone or iPad with ForeFlight installed, long-press an **Install in
+ForeFlight** link and choose **Open in ForeFlight**. This uses ForeFlight's
+documented hosted-content URL scheme. You can alternatively download the ZIP
+and share it to ForeFlight through Files, AirDrop, Finder, or email.
+
 ## Data workflow
 
 - `data/source/freeman/` caches the downloaded state and regional pages.
@@ -43,7 +56,7 @@ through Files, email, Finder, or a supported cloud document provider.
 - `status` defaults to `HISTORICAL_INFORMATIONAL`.
 
 Waypoint identifiers use readable state-prefixed names such as
-`AZ_QUEEN_CREEK_AIRFIELD`. Each waypoint has an airport-style KML marker and an
+`AZ_QUEEN_CREEK_AIRFIELD`. Each waypoint has a ForeFlight-supported airport KML marker and an
 attached source document linking back to the relevant Airfields-Freeman page.
 
 `build_rich_docs.py` optionally downloads the source images and turns each
@@ -54,7 +67,8 @@ ForeFlight's map display.
 
 ## Scope
 
-The default builder covers the 50 states for which data has been collected.
+The default builder covers all 50 states and 2,803 reviewed historical
+airfields.
 Use `scripts/fetch_freeman.py --all-states` to collect the nationwide dataset.
 Use `--include-nonstates` to build every U.S. subdivision present in the source.
 Use `--state AZ` (repeatable) to build selected states.
@@ -70,6 +84,30 @@ Use `--state AZ` (repeatable) to build selected states.
 
 This project is historical reference material. Coordinates and status may be
 wrong or stale; obstacles, ownership, and current land use are not represented.
+
+Known source images that are no longer available from their original URLs are
+listed in [KNOWN_ISSUES.md](KNOWN_ISSUES.md). Every affected history retains its
+complete available narrative and all other available imagery.
+
+## Preparing a GitHub Release
+
+Generated PDFs, source caches, and ZIP packages are deliberately excluded from
+Git history. After building and validating all states, prepare release assets,
+checksums, and installation links with:
+
+```sh
+python3 scripts/prepare_release.py --tag v2.1.0
+```
+
+The command is a dry run by default. Once `gh auth status` succeeds and the
+repository exists, publish all 50 state ZIPs and `SHA256SUMS.txt` with:
+
+```sh
+python3 scripts/prepare_release.py --tag v2.1.0 --publish
+```
+
+See [RELEASING.md](RELEASING.md) for the one-time repository setup and final
+ForeFlight verification checklist.
 
 ## Support
 
