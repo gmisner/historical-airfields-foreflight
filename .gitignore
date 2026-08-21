@@ -1,0 +1,9 @@
+data/source/
+data/airports_review.csv
+data/rich_docs/
+dist/
+release/
+__pycache__/
+*.pyc
+.DS_Store
+tmp/
