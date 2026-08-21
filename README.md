@@ -76,3 +76,7 @@ wrong or stale; obstacles, ownership, and current land use are not represented.
 If you find this project useful, you can buy me a whiskey.
 
 <a href="https://www.buymeacoffee.com/thegearbox"><img src=".github/artwork/buy-me-a-whiskey.svg" alt="Buy me a whiskey" width="260" height="60"></a>
+
+Paul Freeman's *Abandoned &amp; Little-Known Airfields* is the primary data source
+for this project. If you value his research, please consider
+[making a donation to Paul Freeman via PayPal](https://www.paypal.com/donate?token=zsWj6HRO7zWA8JSw2DWV0Ujuj-bJlrW-RaMRNoZU6Z9rxL_I4rgMbI_vyf9pQiUYtLJWBm0yJ149qAoi).
