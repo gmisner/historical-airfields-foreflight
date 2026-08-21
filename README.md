@@ -36,14 +36,46 @@ through Files, email, Finder, or a supported cloud document provider.
 
 ## Download and install
 
-Finished state ZIPs are distributed as assets on a single versioned GitHub
-Release rather than committed to Git. See [PACKS.md](PACKS.md) for the
-state-by-state download table and ForeFlight installation links.
+You need ForeFlight Mobile on an iPhone or iPad. Choose only the states you
+want; each state is a separate Content Pack.
 
-On an iPhone or iPad with ForeFlight installed, long-press an **Install in
-ForeFlight** link and choose **Open in ForeFlight**. This uses ForeFlight's
-documented hosted-content URL scheme. You can alternatively download the ZIP
-and share it to ForeFlight through Files, AirDrop, Finder, or email.
+### Install directly on an iPhone or iPad
+
+1. Open [the complete state list](PACKS.md) in Safari on the device.
+2. Long-press **Install in ForeFlight** beside a state.
+3. Choose **Open in ForeFlight**. If that choice is not shown, tap **Download
+   ZIP**, open the download in Files, tap **Share**, and choose ForeFlight.
+4. In ForeFlight, open **More → Custom Content** and confirm that the state pack
+   appears. On the Maps page, open the map settings menu and enable the state's
+   historical-airfields layer.
+5. Tap a historical-airfield marker to view its name and attached offline
+   illustrated history.
+
+Keep the downloaded file as a ZIP—do not unzip it before sharing it to
+ForeFlight. Delete an older edition before importing its replacement. See
+[ForeFlight's official Content Packs instructions](https://www.foreflight.com/support/content-packs/)
+for other transfer methods, including AirDrop, Finder, and email.
+
+### State downloads — release v2.1.0
+
+Each state name below downloads its ForeFlight-ready ZIP. For one-tap hosted
+installation links and airfield counts, use [the complete state list](PACKS.md).
+
+| | | | |
+| --- | --- | --- | --- |
+| [Alabama](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_AL.zip) | [Alaska](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_AK.zip) | [Arizona](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_AZ.zip) | [Arkansas](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_AR.zip) |
+| [California](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_CA.zip) | [Colorado](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_CO.zip) | [Connecticut](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_CT.zip) | [Delaware](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_DE.zip) |
+| [Florida](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_FL.zip) | [Georgia](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_GA.zip) | [Hawaii](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_HI.zip) | [Idaho](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_ID.zip) |
+| [Illinois](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_IL.zip) | [Indiana](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_IN.zip) | [Iowa](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_IA.zip) | [Kansas](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_KS.zip) |
+| [Kentucky](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_KY.zip) | [Louisiana](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_LA.zip) | [Maine](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_ME.zip) | [Maryland](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_MD.zip) |
+| [Massachusetts](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_MA.zip) | [Michigan](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_MI.zip) | [Minnesota](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_MN.zip) | [Mississippi](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_MS.zip) |
+| [Missouri](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_MO.zip) | [Montana](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_MT.zip) | [Nebraska](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_NE.zip) | [Nevada](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_NV.zip) |
+| [New Hampshire](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_NH.zip) | [New Jersey](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_NJ.zip) | [New Mexico](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_NM.zip) | [New York](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_NY.zip) |
+| [North Carolina](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_NC.zip) | [North Dakota](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_ND.zip) | [Ohio](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_OH.zip) | [Oklahoma](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_OK.zip) |
+| [Oregon](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_OR.zip) | [Pennsylvania](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_PA.zip) | [Rhode Island](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_RI.zip) | [South Carolina](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_SC.zip) |
+| [South Dakota](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_SD.zip) | [Tennessee](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_TN.zip) | [Texas](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_TX.zip) | [Utah](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_UT.zip) |
+| [Vermont](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_VT.zip) | [Virginia](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_VA.zip) | [Washington](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_WA.zip) | [West Virginia](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_WV.zip) |
+| [Wisconsin](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_WI.zip) | [Wyoming](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/Abandoned_Airports_WY.zip) | [Release checksums](https://github.com/gmisner/historical-airfields-foreflight/releases/download/v2.1.0/SHA256SUMS.txt) | [All release files](https://github.com/gmisner/historical-airfields-foreflight/releases/tag/v2.1.0) |
 
 ## Data workflow
 
