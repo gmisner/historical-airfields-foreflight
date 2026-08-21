@@ -73,6 +73,6 @@ wrong or stale; obstacles, ownership, and current land use are not represented.
 
 ## Support
 
-If you find this project useful, you can buy me a coffee.
+If you find this project useful, you can buy me a whiskey.
 
-<a href="https://www.buymeacoffee.com/thegearbox"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me a Coffee" width="217" height="60"></a>
+<a href="https://www.buymeacoffee.com/thegearbox"><img src=".github/artwork/buy-me-a-whiskey.svg" alt="Buy me a whiskey" width="260" height="60"></a>

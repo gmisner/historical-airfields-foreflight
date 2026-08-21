@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="260" height="60" viewBox="0 0 260 60" role="img" aria-labelledby="title desc">
+  <title id="title">Buy me a whiskey</title>
+  <desc id="desc">A yellow support button with a whiskey glass emoji</desc>
+  <rect width="260" height="60" rx="12" fill="#ffdd00" stroke="#000" stroke-width="2"/>
+  <text x="18" y="40" font-family="Apple Color Emoji, Segoe UI Emoji, sans-serif" font-size="28">🥃</text>
+  <text x="60" y="39" fill="#000" font-family="Cookie, Brush Script MT, cursive" font-size="27" font-weight="600">Buy me a whiskey</text>
+</svg>
