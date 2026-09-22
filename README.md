@@ -6,9 +6,29 @@ Explore 2,803 abandoned and little-known airfields in ForeFlight. The version
 2.1 collection covers all 50 states, with a map waypoint and an airport-named
 illustrated history for every location.
 
-The primary source is Paul Freeman's *Abandoned & Little-Known Airfields* site,
-used with the site owner's permission. Packs are informational historical
-references for sightseeing and exploration—not operational aviation data.
+This project is an authorized adaptation of Paul Freeman's
+[*Abandoned & Little-Known Airfields*](https://www.airfields-freeman.com/),
+used with his permission. The packs are informational historical references
+for sightseeing and exploration—not operational aviation data.
+
+## Credit and support Paul Freeman's research
+
+Paul Freeman created and has maintained *Abandoned & Little-Known Airfields*
+since 1999. His decades of research, writing, image collection, contributor
+coordination, and continued updates are the foundation of every pack in this
+project. This repository repackages that work for convenient offline viewing in
+ForeFlight; it does not replace Paul's original website.
+
+Paul's website depends on financial contributions to remain available and keep
+growing. If these packs are useful or enjoyable, please support the original
+research directly:
+
+### [Visit Abandoned & Little-Known Airfields and donate to Paul Freeman](https://www.airfields-freeman.com/)
+
+The donation controls and information are near the top of Paul's home page.
+You can also help the archive grow by contributing historical photographs,
+aeronautical charts, airport directories, corrections, and other source
+material through the contact information on his website.
 
 ## Download and install
 
@@ -63,8 +83,12 @@ installation links and airfield counts, use [the complete state list](PACKS.md).
 
 ## Sources and limitations
 
-- Historical airport names and coordinates: *Abandoned & Little-Known
-  Airfields*, © Paul Freeman, used with permission.
+- Historical airport names, coordinates, narratives, captions, and available
+  imagery: Paul Freeman's
+  [*Abandoned & Little-Known Airfields*](https://www.airfields-freeman.com/),
+  © Paul Freeman, used with permission.
+- Individual photographs and historical materials may retain credits to their
+  original contributors. Those credits are preserved in the attached histories.
 
 This project is historical reference material. Coordinates and status may be
 wrong or stale; obstacles, ownership, and current land use are not represented.
@@ -75,15 +99,15 @@ Known source images that are no longer available from their original URLs are
 listed in [KNOWN_ISSUES.md](KNOWN_ISSUES.md). Every affected history retains its
 complete available narrative and all other available imagery.
 
-## Support
+## Support this ForeFlight-pack project
 
 If you find this project useful, you can buy me a whiskey.
 
 <a href="https://www.buymeacoffee.com/thegearbox"><img src=".github/artwork/buy-me-a-whiskey.svg" alt="Buy me a whiskey" width="260" height="60"></a>
 
-Paul Freeman's *Abandoned &amp; Little-Known Airfields* is the primary data source
-for this project. If you value his research, please consider
-[making a donation to Paul Freeman via PayPal](https://www.paypal.com/donate?token=zsWj6HRO7zWA8JSw2DWV0Ujuj-bJlrW-RaMRNoZU6Z9rxL_I4rgMbI_vyf9pQiUYtLJWBm0yJ149qAoi).
+Please prioritize supporting
+[Paul Freeman's original research](https://www.airfields-freeman.com/) if you
+have not already done so.
 
 Project maintainers and contributors can find build instructions in
 [DEVELOPMENT.md](DEVELOPMENT.md).
