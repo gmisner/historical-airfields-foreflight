@@ -9,6 +9,7 @@ import hashlib
 import re
 import time
 import urllib.request
+from typing import Optional
 
 from lxml import html as lxml_html
 from PIL import Image as PILImage
@@ -28,7 +29,7 @@ def source_id(state: str, url: str, lat: str, lon: str) -> str:
     return hashlib.sha1(f"{state}|{url}|{lat}|{lon}".encode()).hexdigest()[:10].upper()
 
 
-def download(url: str, path: Path) -> Path | None:
+def download(url: str, path: Path) -> Optional[Path]:
     if path.exists(): return path
     candidates = [url]
     archived = re.search(r"/web/[^/]+/(https?://.+)$", url)
@@ -36,7 +37,7 @@ def download(url: str, path: Path) -> Path | None:
         # Wayback image endpoints sometimes return 404/503 even when the
         # original image remains available on Airfields-Freeman.
         candidates.append(archived.group(1))
-    last_error: Exception | None = None
+    last_error: Optional[Exception] = None
     for candidate in candidates:
         try:
             req = urllib.request.Request(candidate, headers={"User-Agent": "HistoricalAirportsForeFlight/1.0 (informational project)"})
