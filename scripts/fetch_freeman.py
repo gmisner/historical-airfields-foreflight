@@ -4,12 +4,14 @@
 from pathlib import Path
 from html.parser import HTMLParser
 from urllib.parse import urljoin, urlparse
+from urllib.error import HTTPError, URLError
 import argparse
 import csv
 import hashlib
 import re
 import time
 import urllib.request
+from typing import Optional
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "https://www.airfields-freeman.com"
@@ -55,15 +57,23 @@ class PageParser(HTMLParser):
             self._block_has_image = False
 
 
-def fetch(url: str, cache: Path) -> str:
+def fetch(url: str, cache: Path) -> Optional[str]:
     if cache.exists(): return cache.read_text(encoding="utf-8", errors="replace")
     req = urllib.request.Request(url, headers={"User-Agent": "HistoricalAirportsForeFlight/1.0 (informational project)"})
-    with urllib.request.urlopen(req, timeout=120) as response:
-        content = response.read()
-    cache.parent.mkdir(parents=True, exist_ok=True)
-    cache.write_bytes(content)
-    time.sleep(0.35)
-    return content.decode("utf-8", errors="replace")
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(req, timeout=120) as response:
+                content = response.read()
+            cache.parent.mkdir(parents=True, exist_ok=True)
+            cache.write_bytes(content)
+            time.sleep(0.35)
+            return content.decode("utf-8", errors="replace")
+        except (HTTPError, URLError, TimeoutError) as exc:
+            if attempt == 2:
+                print(f"WARN: source fetch failed ({url}): {exc}")
+            else:
+                time.sleep(2 ** attempt)
+    return None
 
 
 def parse(html: str) -> PageParser:
@@ -72,11 +82,22 @@ def parse(html: str) -> PageParser:
 
 def regional_urls(state: str, cache_dir: Path) -> list[str]:
     index_url = f"{BASE}/{state}/Airfields_{state}.htm"
-    parser = parse(fetch(index_url, cache_dir / state / f"Airfields_{state}.htm"))
+    index_html = fetch(index_url, cache_dir / state / f"Airfields_{state}.htm")
+    if index_html is None:
+        return []
+    parser = parse(index_html)
     found = {urljoin(index_url, href.split("#", 1)[0]) for href in parser.links}
     prefix = f"/Airfields_{state}"
     urls = [u for u in found if urlparse(u).path.startswith(f"/{state}{prefix}") and urlparse(u).path.lower().endswith((".htm", ".html"))]
     return sorted(set(urls) | {index_url})
+
+
+def stable_key(row: dict[str, str]) -> tuple[str, str, str, str]:
+    """Identify an airfield without making its page URL part of its identity."""
+    name = re.sub(r"[^a-z0-9]+", " ", row["name"].casefold()).strip()
+    lat = f"{float(row['latitude_deg']):.4f}"
+    lon = f"{float(row['longitude_deg']):.4f}"
+    return row["state"], name, lat, lon
 
 
 def extract_page(state: str, url: str, html: str) -> list[dict[str, str]]:
@@ -124,21 +145,41 @@ def main() -> None:
         with args.output.open(newline="", encoding="utf-8-sig") as f:
             existing = {r["source_id"]: r for r in csv.DictReader(f)}
     retained = [r for r in existing.values() if r["state"] not in states]
+    failed_states: set[str] = set()
+    failed_urls: set[str] = set()
     collected = []
     for state in states:
         urls = regional_urls(state, cache_dir)
+        if not urls:
+            failed_states.add(state)
+            print(f"{state}: source index unavailable; retained existing records")
+            continue
         state_rows = []
         for url in urls:
             filename = Path(urlparse(url).path).name
             html = fetch(url, cache_dir / state / filename)
-            state_rows.extend(extract_page(state, url, html))
-        unique = {r["source_id"]: r for r in state_rows}
-        for source_id, row in unique.items():
-            prior = existing.get(source_id, {})
+            if html is not None:
+                state_rows.extend(extract_page(state, url, html))
+            else:
+                failed_urls.add(url)
+        unique = {stable_key(r): r for r in state_rows}
+        prior_by_key = {stable_key(r): r for r in existing.values() if r["state"] == state}
+        merged = {}
+        for key, row in unique.items():
+            prior = prior_by_key.get(key, {})
+            # Keep the reviewed record identity stable when a source page moves.
+            row["source_id"] = prior.get("source_id", row["source_id"])
             for field in ("historical_name", "include", "notes"):
                 if prior.get(field, ""): row[field] = prior[field]
-        collected.extend(unique.values())
-        print(f"{state}: {len(urls)} pages, {len(unique)} airfields")
+            merged[row["source_id"]] = row
+        collected.extend(merged.values())
+        print(f"{state}: {len(urls)} pages, {len(merged)} airfields")
+    collected_ids = {r["source_id"] for r in collected}
+    retained.extend(
+        r for r in existing.values()
+        if r["state"] in failed_states
+        or (r["source_url"] in failed_urls and r["source_id"] not in collected_ids)
+    )
     rows = retained + collected
     rows.sort(key=lambda r: (r["state"], r["name"].casefold(), r["source_id"]))
     args.output.parent.mkdir(parents=True, exist_ok=True)
