@@ -184,7 +184,7 @@ def main() -> None:
     rows.sort(key=lambda r: (r["state"], r["name"].casefold(), r["source_id"]))
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with args.output.open("w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=FIELDS); writer.writeheader(); writer.writerows(rows)
+        writer = csv.DictWriter(f, fieldnames=FIELDS, lineterminator="\n"); writer.writeheader(); writer.writerows(rows)
     print(f"Wrote {len(rows)} records to {args.output}")
 
 
