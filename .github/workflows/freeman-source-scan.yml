@@ -1,0 +1,61 @@
+name: Freeman source scan
+
+on:
+  schedule:
+    - cron: "17 10 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Scan Freeman pages
+        run: python scripts/fetch_freeman.py --all-states --refresh
+
+      - name: Open a draft review PR when data changes
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- data/freeman_review.csv; then
+            echo "No source-controlled Freeman data changes detected."
+            exit 0
+          fi
+
+          branch="hermes/source-update-$(date -u +%F)"
+          if git ls-remote --exit-code --heads origin "$branch" >/dev/null 2>&1; then
+            git fetch origin "$branch"
+            git switch -C "$branch" "origin/$branch"
+          else
+            git switch -c "$branch"
+          fi
+
+          git add data/freeman_review.csv
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: review Freeman source changes"
+          git push --set-upstream origin "$branch"
+
+          if gh pr view "$branch" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            gh pr edit "$branch" --repo "$GITHUB_REPOSITORY" --title "Review Freeman source changes" --body-file .github/freeman-pr-body.md
+          else
+            gh pr create --repo "$GITHUB_REPOSITORY" --base main --head "$branch" --draft \
+              --title "Review Freeman source changes" --body-file .github/freeman-pr-body.md
+          fi
